@@ -1212,6 +1212,8 @@ def staged(
     The transformed method, which will now be a staged function.
   """
 
+  donate_argnums = None
+  
   if isinstance(static_argnums, int):
     static_argnums = (static_argnums,)
 
