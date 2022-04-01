@@ -627,11 +627,12 @@ class Optimizer(utils.WithStagedMethods):
     """Updates the damping parameter."""
     new_loss = self.compute_loss_value(new_func_args)
 
-    if self.value_func_has_state:
-        new_loss = new_loss[0]
+    print(new_loss)
 
     # Sync
     new_loss = utils.pmean_if_pmap(new_loss, self.pmap_axis_name)
+
+    print(new_loss)
 
     damping, rho = self._compute_new_damping_and_rho(
         old_loss, new_loss, quad_change, old_damping)
