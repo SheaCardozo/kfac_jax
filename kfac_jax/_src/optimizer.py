@@ -1105,9 +1105,9 @@ class Optimizer(utils.WithStagedMethods):
 
     # Update damping
     should_decrease = rho > 0.75
-    decreased_damping = current_damping / self.damping_decay_factor
+    decreased_damping = current_damping * self.damping_decay_factor
     should_increase = rho < 0.25
-    increased_damping = current_damping * self.damping_decay_factor
+    increased_damping = current_damping / self.damping_decay_factor
 
     # This is basically an if-else statement
     damping = (should_decrease * decreased_damping +
